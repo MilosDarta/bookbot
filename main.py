@@ -24,9 +24,14 @@ def sort_dic(dic):
     list_dic.sort(reverse=True, key=sort_on)
     return list_dic
 
+def print_report(sorted_list_of_dics):
+    for dic in sorted_list_of_dics:
+        if dic["char"].isalpha():
+            print(f"The '{dic["char"]}' character was found {dic["count"]} times")
+
 def main():
     path_to_file = "books/frankenstein.txt"
-    print(sort_dic(char_count(path_to_file)))
+    print_report(sort_dic(char_count(path_to_file)))
 
 if __name__ == '__main__':
     main()
