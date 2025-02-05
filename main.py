@@ -7,7 +7,6 @@ def read_write_file(path_to_file):
 def char_count(path_to_file):
     with open(path_to_file) as f:
         file_contents_lower = f.read().lower()
-#    freq = {c: file_contents_lower.count(c) for c in file_contents_lower}
     freq = {}
     for c in file_contents_lower:
         if c not in freq:
@@ -15,9 +14,19 @@ def char_count(path_to_file):
         freq[c] += 1
     return freq
 
+def sort_on(dic):
+    return dic["count"]
+
+def sort_dic(dic):
+    list_dic = []
+    for c in dic:
+        list_dic.append({"char": c, "count": dic[c]})
+    list_dic.sort(reverse=True, key=sort_on)
+    return list_dic
+
 def main():
     path_to_file = "books/frankenstein.txt"
-    print(char_count(path_to_file))
+    print(sort_dic(char_count(path_to_file)))
 
 if __name__ == '__main__':
     main()
